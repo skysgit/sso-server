@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: sso-server
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Admin CX
+Implementation-Vendor-Id: com.cn.app
+Build-Jdk: 1.8.0_191
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/sso-server
+Created-By: Maven Integration for Eclipse
+

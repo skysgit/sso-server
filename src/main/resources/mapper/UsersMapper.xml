@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.app.server.dao.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.cn.app.server.model.Users">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pass" jdbcType="VARCHAR" property="userPass" />
+    <result column="other_name" jdbcType="VARCHAR" property="otherName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="country_code" jdbcType="VARCHAR" property="countryCode" />
+    <result column="country_name" jdbcType="VARCHAR" property="countryName" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="county_code" jdbcType="VARCHAR" property="countyCode" />
+    <result column="county_name" jdbcType="VARCHAR" property="countyName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_pass, other_name, phone, email, address, salt, country_code, 
+    country_name, city_code, city_name, county_code, county_name, create_time, update_time, 
+    create_user, update_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from users
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cn.app.server.model.Users">
+    insert into users (user_id, user_name, user_pass, 
+      other_name, phone, email, 
+      address, salt, country_code, 
+      country_name, city_code, city_name, 
+      county_code, county_name, create_time, 
+      update_time, create_user, update_user
+      )
+    values (#{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, 
+      #{otherName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, 
+      #{countryName,jdbcType=VARCHAR}, #{cityCode,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, 
+      #{countyCode,jdbcType=VARCHAR}, #{countyName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.app.server.model.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPass != null">
+        user_pass,
+      </if>
+      <if test="otherName != null">
+        other_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="countryCode != null">
+        country_code,
+      </if>
+      <if test="countryName != null">
+        country_name,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="countyCode != null">
+        county_code,
+      </if>
+      <if test="countyName != null">
+        county_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null">
+        #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="otherName != null">
+        #{otherName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countryName != null">
+        #{countryName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyCode != null">
+        #{countyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null">
+        #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.app.server.model.Users">
+    update users
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPass != null">
+        user_pass = #{userPass,jdbcType=VARCHAR},
+      </if>
+      <if test="otherName != null">
+        other_name = #{otherName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        country_code = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countryName != null">
+        country_name = #{countryName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="countyCode != null">
+        county_code = #{countyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="countyName != null">
+        county_name = #{countyName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.app.server.model.Users">
+    update users
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_pass = #{userPass,jdbcType=VARCHAR},
+      other_name = #{otherName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      country_code = #{countryCode,jdbcType=VARCHAR},
+      country_name = #{countryName,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      county_code = #{countyCode,jdbcType=VARCHAR},
+      county_name = #{countyName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+</mapper>

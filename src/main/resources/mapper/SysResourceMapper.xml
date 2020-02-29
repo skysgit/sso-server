@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.app.server.dao.SysResourceMapper">
+  <resultMap id="BaseResultMap" type="com.cn.app.server.model.SysResource">
+    <id column="res_id" jdbcType="INTEGER" property="resId" />
+    <result column="res_name" jdbcType="VARCHAR" property="resName" />
+    <result column="res_code" jdbcType="VARCHAR" property="resCode" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="parent_res_id" jdbcType="INTEGER" property="parentResId" />
+    <result column="order" jdbcType="TINYINT" property="order" />
+    <result column="system_code" jdbcType="VARCHAR" property="systemCode" />
+    <result column="resource_url" jdbcType="VARCHAR" property="resourceUrl" />
+    <result column="valid" jdbcType="TINYINT" property="valid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    res_id, res_name, res_code, remark, parent_res_id, order, system_code, resource_url, 
+    valid, create_time, update_time, create_user, update_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_resource
+    where res_id = #{resId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_resource
+    where res_id = #{resId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.app.server.model.SysResource">
+    insert into sys_resource (res_id, res_name, res_code, 
+      remark, parent_res_id, order, 
+      system_code, resource_url, valid, 
+      create_time, update_time, create_user, 
+      update_user)
+    values (#{resId,jdbcType=INTEGER}, #{resName,jdbcType=VARCHAR}, #{resCode,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{parentResId,jdbcType=INTEGER}, #{order,jdbcType=TINYINT}, 
+      #{systemCode,jdbcType=VARCHAR}, #{resourceUrl,jdbcType=VARCHAR}, #{valid,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.app.server.model.SysResource">
+    insert into sys_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resId != null">
+        res_id,
+      </if>
+      <if test="resName != null">
+        res_name,
+      </if>
+      <if test="resCode != null">
+        res_code,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="parentResId != null">
+        parent_res_id,
+      </if>
+      <if test="order != null">
+        order,
+      </if>
+      <if test="systemCode != null">
+        system_code,
+      </if>
+      <if test="resourceUrl != null">
+        resource_url,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resId != null">
+        #{resId,jdbcType=INTEGER},
+      </if>
+      <if test="resName != null">
+        #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resCode != null">
+        #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentResId != null">
+        #{parentResId,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=TINYINT},
+      </if>
+      <if test="systemCode != null">
+        #{systemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null">
+        #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.app.server.model.SysResource">
+    update sys_resource
+    <set>
+      <if test="resName != null">
+        res_name = #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resCode != null">
+        res_code = #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentResId != null">
+        parent_res_id = #{parentResId,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        order = #{order,jdbcType=TINYINT},
+      </if>
+      <if test="systemCode != null">
+        system_code = #{systemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null">
+        resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where res_id = #{resId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.app.server.model.SysResource">
+    update sys_resource
+    set res_name = #{resName,jdbcType=VARCHAR},
+      res_code = #{resCode,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      parent_res_id = #{parentResId,jdbcType=INTEGER},
+      order = #{order,jdbcType=TINYINT},
+      system_code = #{systemCode,jdbcType=VARCHAR},
+      resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      valid = #{valid,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where res_id = #{resId,jdbcType=INTEGER}
+  </update>
+</mapper>

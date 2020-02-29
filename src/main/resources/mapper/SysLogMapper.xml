@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.app.server.dao.SysLogMapper">
+  <resultMap id="BaseResultMap" type="com.cn.app.server.model.SysLog">
+    <id column="log_id" jdbcType="INTEGER" property="logId" />
+    <result column="mode" jdbcType="VARCHAR" property="mode" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="oprator" jdbcType="VARCHAR" property="oprator" />
+    <result column="oprator_time" jdbcType="TIMESTAMP" property="opratorTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="valid" jdbcType="TINYINT" property="valid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    log_id, mode, type, oprator, oprator_time, remark, num, valid, create_time, create_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_log
+    where log_id = #{logId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.app.server.model.SysLog">
+    insert into sys_log (log_id, mode, type, 
+      oprator, oprator_time, remark, 
+      num, valid, create_time, 
+      create_user)
+    values (#{logId,jdbcType=INTEGER}, #{mode,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{oprator,jdbcType=VARCHAR}, #{opratorTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{num,jdbcType=INTEGER}, #{valid,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.app.server.model.SysLog">
+    insert into sys_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        log_id,
+      </if>
+      <if test="mode != null">
+        mode,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="oprator != null">
+        oprator,
+      </if>
+      <if test="opratorTime != null">
+        oprator_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null">
+        #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="oprator != null">
+        #{oprator,jdbcType=VARCHAR},
+      </if>
+      <if test="opratorTime != null">
+        #{opratorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.app.server.model.SysLog">
+    update sys_log
+    <set>
+      <if test="mode != null">
+        mode = #{mode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="oprator != null">
+        oprator = #{oprator,jdbcType=VARCHAR},
+      </if>
+      <if test="opratorTime != null">
+        oprator_time = #{opratorTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.app.server.model.SysLog">
+    update sys_log
+    set mode = #{mode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      oprator = #{oprator,jdbcType=VARCHAR},
+      oprator_time = #{opratorTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      valid = #{valid,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR}
+    where log_id = #{logId,jdbcType=INTEGER}
+  </update>
+</mapper>

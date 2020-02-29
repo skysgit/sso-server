@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.app.server.dao.SysRoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.cn.app.server.model.SysRoleResource">
+    <id column="role_res_id" jdbcType="INTEGER" property="roleResId" />
+    <result column="res_id" jdbcType="INTEGER" property="resId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="valid" jdbcType="TINYINT" property="valid" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_res_id, res_id, role_id, valid, create_time, update_time, create_user, update_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role_resource
+    where role_res_id = #{roleResId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_role_resource
+    where role_res_id = #{roleResId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.app.server.model.SysRoleResource">
+    insert into sys_role_resource (role_res_id, res_id, role_id, 
+      valid, create_time, update_time, 
+      create_user, update_user)
+    values (#{roleResId,jdbcType=INTEGER}, #{resId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, 
+      #{valid,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.app.server.model.SysRoleResource">
+    insert into sys_role_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleResId != null">
+        role_res_id,
+      </if>
+      <if test="resId != null">
+        res_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleResId != null">
+        #{roleResId,jdbcType=INTEGER},
+      </if>
+      <if test="resId != null">
+        #{resId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.app.server.model.SysRoleResource">
+    update sys_role_resource
+    <set>
+      <if test="resId != null">
+        res_id = #{resId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where role_res_id = #{roleResId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.app.server.model.SysRoleResource">
+    update sys_role_resource
+    set res_id = #{resId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
+      valid = #{valid,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where role_res_id = #{roleResId,jdbcType=INTEGER}
+  </update>
+</mapper>
